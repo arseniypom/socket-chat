@@ -1,0 +1,57 @@
+@import '~normalize.css';
+
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.login-form {
+  background-color: #17212B;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 452px;
+  height: 497px;
+}
+
+.login-form-header {
+  color: #fff;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 28px;
+}
+
+.login-form-text {
+  line-height: 18px;
+  text-align: center;
+  color: #7F91A4;
+}
+
+.login-form-input {
+  padding: 10px;
+  width: 298px;
+  margin: 2rem;
+  color: #858F98;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #465461;
+}
+
+.login-form-button {
+  padding: 13px 40px;
+  width: fit-content;
+  color: #fff;
+  background-color: #5188C1;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 17px;
+  text-transform: uppercase;
+}
+
+/* Chat */
