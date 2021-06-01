@@ -1,6 +1,7 @@
-<div class="login-form">
+<div id="login" class="login-form hidden">
   <h1 class="login-form-header">Авторизация</h1>
   <p class="login-form-text">Введите пожалуйста свой ник для дальнейшей авторизации</p>
-  <input type="text" class="login-form-input" placeholder="Введите свой ник">
-  <button class="login-form-button">Войти</button>
+  <input type="text" class="login-form-input" placeholder="Введите свой ник" data-role="login-name-input">
+  <button class="login-form-button" data-role="login-submit">Войти</button>
+  <div class="login-error" data-role="login-error"></div>
 </div>

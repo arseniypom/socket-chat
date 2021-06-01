@@ -1,23 +1,29 @@
-import Chat from "./Chat";
-import LoginTemplate from "./templates/login.hbs";
+import LoginWindow from './ui/loginWindow';
+import ChatWindow from './ui/chatWindow';
+import UserName from './ui/userName';
 
-export default class socketChat {
+export default class SocketChat {
   constructor() {
-    this.socket = new WebSocket("ws://localhost:8080");
-    this.chat = new Chat();
-    this.onInit();
+    this.ui = {
+      loginWindow: new LoginWindow(
+        document.querySelector('#login'),
+        this.onLogin.bind(this)
+      ),
+      chatWindow: new ChatWindow(
+        document.querySelector('#chat'),
+        this.onLogin.bind(this)
+      ),
+      userName: new UserName(
+        document.querySelector('[data-role=user-name]')
+      )
+    }
+
+    this.ui.loginWindow.show();
   }
 
-  onInit() {
-    this.socket.addEventListener('message', function (event) {
-      this.chat.addMessage(event.data);
-      // console.log(event);
-    });
-    this.socket.addEventListener('error', function() {
-        alert('Соединение закрыто или не может быть открыто');
-    });
+  async onLogin(name) {
+    this.ui.loginWindow.hide();
+    this.ui.chatWindow.show();
+    this.ui.userName.set(name);
   }
-
-
-
 }

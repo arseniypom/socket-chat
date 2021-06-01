@@ -5,7 +5,8 @@
   <title>{{htmlWebpackPlugin.options.title}}</title>
 </head>
 <body>
-  <main class="container">
+  <main id="app" class="container">
+    {{> './templates/login.hbs'}}
     {{> './templates/chat.hbs'}}
   </main>
 </body>

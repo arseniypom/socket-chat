@@ -2,6 +2,7 @@ const WebSocketServer = new require('ws');
  
 var clients = {};
 let currentId = 1;
+let users = [];
  
 const webSocketServer = new WebSocketServer.Server({port: 8080});
  
