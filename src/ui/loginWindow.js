@@ -7,7 +7,7 @@ export default class LoginWindow {
     const submitButton = document.querySelector('[data-role=login-submit]');
     const loginError = document.querySelector('[data-role=login-error]');
 
-    submitButton.addEventListener('click', () => {
+    const logIn = () => {
       loginError.textContent = '';
 
       const name = loginNameInput.value.trim();
@@ -17,12 +17,20 @@ export default class LoginWindow {
       } else {
         this.onLogin(name);
       }
-    })
+    }
+
+    submitButton.addEventListener('click', logIn);
+    loginNameInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        logIn();
+      }
+    });
   }
 
   show() {
     this.element.classList.remove('hidden');
   }
+  
   hide() {
     this.element.classList.add('hidden');
   }

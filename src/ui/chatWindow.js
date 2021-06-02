@@ -6,6 +6,7 @@ export default class ChatWindow {
   show() {
     this.element.classList.remove('hidden');
   }
+  
   hide() {
     this.element.classList.add('hidden');
   }

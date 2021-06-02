@@ -1,5 +1,9 @@
 @import '~normalize.css';
 
+* {
+  outline: none;
+}
+
 .container {
   width: 100%;
   height: 100vh;
@@ -89,9 +93,10 @@
 
 .user-info {
   display: flex;
+  padding-bottom: 1rem;
 }
 
-.user-photo {
+.user-photo img {
   width: 3rem;
   height: 3rem;
 }
@@ -106,12 +111,25 @@
 .chat-header {
   max-height: 3.75rem;
   padding: .8rem 0 .5rem 1rem;
+  border-left: 2px solid #0E1621;
   background-color: #17212B;
+}
+
+.message-container {
+  padding: 1rem;
+}
+
+.message-item-content {
+  background-color: #182633;
+  width: fit-content;
+  padding: .5rem 4rem .5rem 1rem;
+  border-radius: 15px;
 }
 
 .input-container {
   background-color: #17212B;
   padding: 1.5rem .75rem 1rem;
+  border-left: 2px solid #0E1621;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

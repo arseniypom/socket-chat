@@ -22,7 +22,12 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     hot: isDev,
-    port: 3000,
+    proxy: {
+      "/socket-chat/ws": {
+        "target": "ws://localhost:8282",
+        "ws": true
+      }
+    }
   },
   module: { rules },
   plugins: [
