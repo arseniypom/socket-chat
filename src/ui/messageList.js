@@ -1,4 +1,5 @@
 import { sanitize } from "../utils";
+import MessageTemplate from "../templates/message.hbs";
 
 export default class MessageList {
   constructor(element) {
@@ -13,18 +14,11 @@ export default class MessageList {
     const item = document.createElement('div');
 
     item.classList.add('message-item');
-    item.innerHTML = `
-    <div class="message-item">
-      <div class="message-photo" data-role="user-avatar" data-user=${sanitize(from)}></div>
-      <div class="message-item-content">
-        <div class="message-item-header">
-          <div class="message-item-header-name">${sanitize(from)}</div>
-          <div class="message-item-header-time">${time}</div>
-        </div>
-        <div class="message-item-text">${sanitize(text)}</div>
-      </div>
-    </div>
-    `;
+    item.innerHTML = MessageTemplate({
+      from: sanitize(from),
+      time,
+      text: sanitize(text)
+    });
 
     this.element.append(item);
     this.element.scrollTop = this.element.scrollHeight;
