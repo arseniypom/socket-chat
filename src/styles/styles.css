@@ -104,9 +104,13 @@ button {
 .message-item-photo {
   margin-right: 1rem;
   background-size: cover;
-  border-radius: 40%;
+  border-radius: 50%;
   width: 3rem;
   height: 3rem;
+}
+
+.user-list-item {
+  padding-top: .3rem;
 }
 
 .right-side {
