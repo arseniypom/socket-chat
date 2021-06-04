@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const CopyPlugin = require("copy-webpack-plugin");
 let rules = require('./webpack.config.rules')();
 const path = require('path');
 
@@ -26,6 +27,12 @@ module.exports = {
       "/socket-chat/ws": {
         "target": "ws://localhost:8282",
         "ws": true
+      },
+      "/socket-chat/photos": {
+        "target": "http://localhost:8282",
+      },
+      "/socket-chat/upload-photo": {
+        "target": "http://localhost:8282",
       }
     }
   },
@@ -39,5 +46,10 @@ module.exports = {
       filename: '[name]_[contenthash].css'
     }),
     new CleanWebpackPlugin(),
+    // new CopyPlugin({
+    //   patterns: [
+    //     { from: "src", to: "dist" }
+    //   ],
+    // }),
   ],
 }

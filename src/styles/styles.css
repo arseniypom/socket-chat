@@ -97,9 +97,14 @@ button {
 .user-info {
   display: flex;
   padding-bottom: 1rem;
+  align-items: center;
 }
 
-.user-photo img {
+.user-photo,
+.message-item-photo {
+  margin-right: 1rem;
+  background-size: cover;
+  border-radius: 40%;
   width: 3rem;
   height: 3rem;
 }
@@ -109,6 +114,9 @@ button {
   height: 100vh;
   background-color: #0E1621;
   position: relative;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-header {
@@ -120,6 +128,13 @@ button {
 
 .message-container {
   padding: 1rem;
+  flex-grow: 1;
+  overflow: scroll;
+}
+
+.message-item {
+  display: flex;
+  margin-bottom: .5rem;
 }
 
 .message-item-content {
@@ -136,10 +151,6 @@ button {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
 }
 
 .message-input {

@@ -8,6 +8,10 @@ module.exports = function() {
     {
       test: /\.hbs/,
       use: 'handlebars-loader'
+    },
+    {
+      test: /\.(jpe?g|png|gif|svg|)$/i,
+      use: 'file-loader'
     }
   ];
 };

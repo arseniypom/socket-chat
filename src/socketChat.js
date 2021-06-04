@@ -4,6 +4,7 @@ import UserName from './ui/userName';
 import UserList from './ui/userList';
 import MessageList from './ui/messageList';
 import MessageSender from './ui/messageSender';
+import UserPhoto from './ui/userPhoto';
 import WSClient from './wsClient';
 
 export default class SocketChat {
@@ -25,10 +26,26 @@ export default class SocketChat {
       messageSender: new MessageSender(
         document.querySelector('[data-role=message-sender]'),
         this.onSend.bind(this)
+      ),
+      userPhoto: new UserPhoto(
+        document.querySelector('[data-role=user-photo]'),
+        this.onUpload.bind(this)
       )
     }
 
     this.ui.loginWindow.show();
+  }
+
+  onUpload(data) {
+    this.ui.userPhoto.set(data);
+
+    fetch('/socket-chat/upload-photo', {
+      method: 'post',
+      body: JSON.stringify({
+        name: this.ui.userName.get(),
+        image: data,
+      }),
+    });
   }
 
   onSend(message) {
@@ -42,6 +59,7 @@ export default class SocketChat {
     this.ui.loginWindow.hide();
     this.ui.chatWindow.show();
     this.ui.userName.set(name);
+    this.ui.userPhoto.set(`/socket-chat/photos/${name}.png?t=${Date.now()}`);
   }
 
   onMessage({ type, from, data }) {
@@ -59,6 +77,16 @@ export default class SocketChat {
       this.ui.messageList.addSystemMessage(`${from} вышел из чата`);
     } else if (type === 'text-message') {
       this.ui.messageList.add(from, data.message);
+    } else if (type === 'photo-changed') {
+      const avatars = document.querySelectorAll(
+        `[data-user='${data.name}']`
+      );
+
+      for (const avatar of avatars) {
+        avatar.style.backgroundImage = `url(/socket-chat/photos/${
+          data.name
+        }.png?t=${Date.now()})`;
+      }
     }
   }
 }

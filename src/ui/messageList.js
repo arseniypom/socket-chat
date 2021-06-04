@@ -17,7 +17,8 @@ export default class MessageList {
     item.innerHTML = MessageTemplate({
       from: sanitize(from),
       time,
-      text: sanitize(text)
+      text: sanitize(text),
+      date: Date.now()
     });
 
     this.element.append(item);
@@ -27,7 +28,7 @@ export default class MessageList {
   addSystemMessage(message) {
     const item = document.createElement('div');
 
-    item.classList.add('message-item message-item-system');
+    item.classList.add('message-item', 'message-item-system');
     item.textContent = message;
 
     this.element.append(item);
