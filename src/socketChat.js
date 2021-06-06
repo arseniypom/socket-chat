@@ -63,8 +63,6 @@ export default class SocketChat {
   }
 
   onMessage({ type, from, data }) {
-    console.log(type, from, data);
-
     if (type === 'hello') {
       this.ui.userList.add(from);
       this.ui.messageList.addSystemMessage(`${from} вошел в чат`);
